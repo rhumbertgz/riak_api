@@ -27,6 +27,8 @@ override_schema_test() ->
         {["listener", "protobuf", "external"], "127.0.0.9:3000"},
         {["listener", "https", "internal"], "127.0.0.12:443"},
         {["listener", "https", "external"], "127.0.0.13:443"},
+        {["events", "protobuf", "internal"], "127.0.0.14:9000"},
+        {["events", "protobuf", "external"], "127.0.0.15:9000"},
         {["protobuf", "backlog"], 64},
         {["protobuf", "nagle"], on},
         {["honor_cipher_order"], off},
@@ -59,7 +61,9 @@ context() ->
         {web_ip, "127.0.0.1"},
         {web_port, 8098},
         {pb_ip, "127.0.0.1"},
-        {pb_port, 8087}
+        {pb_port, 8087},
+        {pbevents_ip, "0.0.0.0"},
+        {pbevents_port, 8092}
     ].
 
 basho_vm(ExpectedIfBasho, ExpectedIfNot) ->
